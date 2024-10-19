@@ -5,7 +5,7 @@ use clap::Parser;
 use tokio::runtime::Runtime;
 
 #[derive(Debug, Parser)]
-struct Args {
+struct Cli {
     #[arg(short, long)]
     cidr: IpCidr,
 
@@ -17,7 +17,7 @@ struct Args {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let args = Args::parse();
+    let args = Cli::parse();
 
     if args.port_start > args.port_end {
         panic!("port_start cannot be greater than port_end")
