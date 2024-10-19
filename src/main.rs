@@ -1,12 +1,13 @@
 use std::{error::Error, net::IpAddr};
 
+use cidr::IpCidr;
 use clap::Parser;
-use tokio::{runtime::Runtime, sync::futures};
+use tokio::runtime::Runtime;
 
 #[derive(Debug, Parser)]
 struct Args {
     #[arg(short, long)]
-    address: IpAddr,
+    cidr: IpCidr,
 
     #[arg(short = 's', long, default_value = "0")]
     port_start: u16,
@@ -28,20 +29,22 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     let mut tasks: Vec<tokio::task::JoinHandle<()>> = vec![];
     runtime.block_on(async {
-        for port in args.port_start..=args.port_end {
-            let cloned_sender = sender.clone();
+        for address in args.cidr.iter().map(|ip_inet| return ip_inet.address()) {
+            for port in args.port_start..=args.port_end {
+                let cloned_sender = sender.clone();
 
-            let task = tokio::spawn(async move {
-                let connection = tokio::net::TcpStream::connect((args.address, port)).await;
-                if let Ok(_open) = connection {
-                    cloned_sender
-                        .send((args.address, port))
-                        .await
-                        .expect("sending message to channel must not fail");
-                };
-            });
+                let task = tokio::spawn(async move {
+                    let connection = tokio::net::TcpStream::connect((address, port)).await;
+                    if let Ok(_open) = connection {
+                        cloned_sender
+                            .send((address, port))
+                            .await
+                            .expect("sending message to channel must not fail");
+                    };
+                });
 
-            tasks.push(task);
+                tasks.push(task);
+            }
         }
 
         for task in tasks {
