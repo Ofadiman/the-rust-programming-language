@@ -5,18 +5,9 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    // This method is "static" and available on struct itself.
     fn new(width: u32, height: u32) -> Self {
         return Self { width, height };
-    }
-
-    // This method does not take ownership of the struct.
-    fn area(self: &Self) -> u32 {
-        self.width * self.height
-    }
-
-    // This method does not take ownership of the struct.
-    fn sides(&self) -> (u32, u32) {
-        (self.width, self.height)
     }
 
     // This method takes ownership of the struct.
@@ -25,6 +16,11 @@ impl Rectangle {
             width: self.width * 2,
             height: self.height * 2,
         }
+    }
+
+    // This method does not take ownership of the struct.
+    fn area(self: &Self) -> u32 {
+        self.width * self.height
     }
 
     // This method updates struct without taking ownership.
@@ -40,11 +36,6 @@ fn main() {
     println!(
         "The area of the rectangle is {} square pixels.",
         rectangle.area()
-    );
-
-    println!(
-        "The sides of the rectangle are {:?} pixels.",
-        rectangle.sides()
     );
 
     let mut doubled = rectangle.double();

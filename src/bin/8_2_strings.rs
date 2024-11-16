@@ -1,8 +1,9 @@
+#![allow(dead_code)]
+
 fn main() {
     unicode();
 }
 
-#[allow(dead_code)]
 fn mutating_strings_with_plus_operator() {
     let s1 = String::from("Hello, ");
     let s2 = String::from("world!");
@@ -14,7 +15,6 @@ fn mutating_strings_with_plus_operator() {
     println!("concatenated string using plus operator: {s4}")
 }
 
-#[allow(dead_code)]
 fn format_macro() {
     let s1 = String::from("tic");
     let s2 = String::from("tac");
@@ -24,14 +24,12 @@ fn format_macro() {
     println!("concatenated string using format macro: {s4}")
 }
 
-#[allow(dead_code)]
 fn indexing_strings() {
     let hello_world = String::from("Hello, World!");
     let hello = &hello_world[0..=4];
     println!("hello slice: {hello:#?}");
 }
 
-#[allow(dead_code)]
 fn unicode() {
     let greating = String::from("cześć");
 

@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::borrow::Borrow;
 
 fn main() {
@@ -36,7 +38,6 @@ where
 }
 
 #[derive(Debug)]
-#[allow(dead_code)]
 struct Point<T, U> {
     x: T,
     y: U,
@@ -52,7 +53,6 @@ where
     }
 }
 
-#[allow(dead_code)]
 enum Maybe<T> {
     Yes(T),
     No,

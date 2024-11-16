@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 fn main() {
     println!("2+2={}", add(2, 2))
 }
@@ -6,7 +8,6 @@ fn add(left: usize, right: usize) -> usize {
     left + right
 }
 
-#[allow(dead_code)]
 fn longest<'a>(left: &'a str, right: &'a str) -> &'a str {
     if left > right {
         left
@@ -15,7 +16,6 @@ fn longest<'a>(left: &'a str, right: &'a str) -> &'a str {
     }
 }
 
-#[allow(dead_code)]
 fn might_panic(number: u32) {
     if number > 100 {
         panic!("number must not be greater than 100")

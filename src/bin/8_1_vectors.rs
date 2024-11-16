@@ -1,8 +1,9 @@
+#![allow(dead_code)]
+
 fn main() {
     vector_of_unions()
 }
 
-#[allow(dead_code)]
 fn basic_vector_operations() {
     let mut numbers = vec![0, 1, 2, 3, 4];
 
@@ -29,7 +30,6 @@ fn basic_vector_operations() {
     println!("{numbers:#?}");
 }
 
-#[allow(dead_code)]
 fn vector_of_unions() {
     #[derive(Debug)]
 

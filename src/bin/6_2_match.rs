@@ -1,3 +1,5 @@
+#![allow(unused_variables)]
+
 use rand::seq::SliceRandom;
 use rand::{self, distributions::Standard, prelude::Distribution, Rng};
 
@@ -38,7 +40,6 @@ impl Distribution<Roll> for Standard {
     }
 }
 
-#[allow(unused_variables)]
 fn main() {
     let roll: Roll = rand::random();
 

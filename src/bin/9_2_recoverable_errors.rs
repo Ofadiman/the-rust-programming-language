@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::error::Error;
 use std::fs::File;
 use std::io::{self, ErrorKind, Read};
@@ -8,7 +10,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     return Ok(());
 }
 
-#[allow(dead_code)]
 fn matching_on_errors() {
     let greeting_file_result = File::open("hello.txt");
 
@@ -26,7 +27,6 @@ fn matching_on_errors() {
     };
 }
 
-#[allow(dead_code)]
 fn propagating_errors() {
     fn read_username_from_file() -> Result<String, io::Error> {
         let mut username = String::new();
@@ -39,7 +39,6 @@ fn propagating_errors() {
     }
 }
 
-#[allow(dead_code)]
 fn last_char_of_first_line(text: &str) -> Option<char> {
     // Question mark operator can also be used on `Option` type to extract `Some` value, or to
     // propagate `None` value to the caller.

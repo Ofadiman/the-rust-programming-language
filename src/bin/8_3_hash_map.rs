@@ -1,10 +1,11 @@
+#![allow(dead_code)]
+
 use std::collections::HashMap;
 
 fn main() {
     basic_operations()
 }
 
-#[allow(dead_code)]
 fn update_hash_map_values() {
     let mut scores: HashMap<String, i32> = HashMap::new();
 
@@ -24,7 +25,6 @@ fn update_hash_map_values() {
     println!("{scores:#?}");
 }
 
-#[allow(dead_code)]
 fn iterate_over_hash_map() {
     let mut scores: HashMap<String, i32> = HashMap::new();
 
@@ -36,7 +36,6 @@ fn iterate_over_hash_map() {
     }
 }
 
-#[allow(dead_code)]
 fn basic_operations() {
     let mut scores: HashMap<String, i32> = HashMap::new();
 

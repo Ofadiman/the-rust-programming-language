@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use std::fmt::Display;
 
 fn main() {
@@ -34,7 +36,6 @@ trait Summary {
     }
 }
 
-#[allow(dead_code)]
 struct NewsArticle {
     headline: String,
     location: String,
@@ -50,7 +51,6 @@ impl Summary for NewsArticle {
     }
 }
 
-#[allow(dead_code)]
 struct Tweet {
     username: String,
     content: String,
@@ -80,13 +80,11 @@ impl Summary for Vec<String> {
 }
 
 // Traits can be used as function parameters with generics.
-#[allow(dead_code)]
 fn notify<T: Summary + Display>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }
 
 // Alternative syntax of using traits as parameters which is "clearer" according to documentation.
-#[allow(dead_code)]
 fn notify_where<T>(item: &T) -> impl Clone
 where
     T: Summary + Display,

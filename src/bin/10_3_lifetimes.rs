@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 fn main() {
     let s1 = "first";
     let s2 = "second";
@@ -25,13 +27,11 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 }
 
 #[derive(Debug)]
-#[allow(dead_code)]
 struct ImportantExcerpt<'a> {
     part: &'a str,
     id: String,
 }
 
-#[allow(dead_code)]
 impl<'a> ImportantExcerpt<'a> {
     fn level(&self) -> i32 {
         3

@@ -1,10 +1,11 @@
+#![allow(dead_code)]
+
 use rand::Rng;
 
 fn main() {
     results()
 }
 
-#[allow(dead_code)]
 fn extract_values_from_enum() {
     #[derive(Debug)]
     enum Color {
@@ -27,7 +28,6 @@ fn extract_values_from_enum() {
     println!("{computed:#?}");
 }
 
-#[allow(dead_code)]
 fn results() {
     let number = rand::thread_rng().gen_range(1..=2);
     let option = if number == 1 { Some(1) } else { None };

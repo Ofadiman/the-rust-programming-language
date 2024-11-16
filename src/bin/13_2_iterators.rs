@@ -9,7 +9,6 @@ fn implicit_iterators() {
 
     // For loop creates iterators implicitly and takes ownership of the data, so `numbers` vector
     // will be moved if I don't use reference here.
-    // reference,
     for number in &numbers {
         dbg!(number);
     }

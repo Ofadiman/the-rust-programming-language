@@ -1,13 +1,11 @@
-// Ownership rules:
-// - Each value in Rust has an owner.
-// - There can only be one owner at a time.
-// - When the owner goes out of scope, the value will be dropped.
+#![allow(dead_code)]
+
+// Each value in Rust has exactly 1 owner, and when the owner goes out of scope, the value will be dropped.
 
 fn main() {
     function_returns_ownership()
 }
 
-#[allow(dead_code)]
 fn string() {
     // Strings are mutable and are allocated on the heap.
     let mut string = String::from("Hello");
@@ -15,14 +13,12 @@ fn string() {
     println!("{string}");
 }
 
-#[allow(dead_code)]
 fn string_literal() {
     // String literals are immutable and are allocated on the stack.
     let literal = "immutable";
     println!("{literal}")
 }
 
-#[allow(dead_code)]
 fn print_pointer() {
     let pointer: &String = &String::from("pointer");
     // Rust is dereferencing variables by default, so to print pointers we have to use appropriate
@@ -30,7 +26,6 @@ fn print_pointer() {
     println!("{pointer:p}");
 }
 
-#[allow(dead_code)]
 fn string_capacity() {
     // Allocate 32 bytes of capacity by default.
     let mut capacity: String = String::with_capacity(32);
@@ -51,7 +46,6 @@ fn string_capacity() {
     );
 }
 
-#[allow(dead_code)]
 fn pointers_after_reassing() {
     // pointer: 0x7fff989c06d8
     let s1 = String::from("Hello, World!");
@@ -62,7 +56,6 @@ fn pointers_after_reassing() {
     println!("pointer: {:p}", &s2);
 }
 
-#[allow(dead_code)]
 fn cloning() {
     let s1 = String::from("Hello, World!");
     let s2 = s1.clone();
@@ -77,7 +70,6 @@ fn cloning() {
     println!("x = {x}, y = {y}");
 }
 
-#[allow(dead_code)]
 fn functions_taking_ownership() {
     fn function(s: String) {
         println!("{s}")
@@ -90,7 +82,6 @@ fn functions_taking_ownership() {
     // `string` moved to `function` and is no longer valid here.
 }
 
-#[allow(dead_code)]
 fn functions_making_copy() {
     fn function(i: i32) {
         println!("{i}");
@@ -105,7 +96,6 @@ fn functions_making_copy() {
     println!("{int}");
 }
 
-#[allow(dead_code)]
 fn function_returns_ownership() {
     fn function(string: String) -> String {
         format!("{string}, World!")

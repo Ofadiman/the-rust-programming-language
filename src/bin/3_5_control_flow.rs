@@ -1,3 +1,5 @@
+#![allow(dead_code)]
+
 use rand::{rngs::StdRng, Rng, SeedableRng};
 use rand_pcg::Pcg64;
 use rand_seeder::Seeder;
@@ -6,7 +8,6 @@ fn main() {
     loop_over_collections()
 }
 
-#[allow(dead_code)]
 fn if_else_if_else() {
     let mut rng: Pcg64 = Seeder::from("stripy zebra").make_rng();
 
@@ -21,7 +22,6 @@ fn if_else_if_else() {
     }
 }
 
-#[allow(dead_code)]
 fn if_in_let() {
     let mut rng = StdRng::seed_from_u64(1);
     let condition: bool = rng.gen();
@@ -29,7 +29,6 @@ fn if_in_let() {
     println!("condition: {condition}, number: {number}")
 }
 
-#[allow(dead_code)]
 fn looping() {
     let mut counter = 0;
     loop {
@@ -42,7 +41,6 @@ fn looping() {
     }
 }
 
-#[allow(dead_code)]
 fn loop_labels() {
     let mut count = 0;
 
@@ -67,7 +65,6 @@ fn loop_labels() {
     }
 }
 
-#[allow(dead_code)]
 fn loop_over_collections() {
     let vector = vec![1, 2, 3, 4, 5];
     for number in vector {
